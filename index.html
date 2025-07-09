@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+    integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+    integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <title>Mangalam Hotel - Bhavanath</title>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            gold: '#D4AF37',
+            navy: '#0F172A',
+            cream: '#F5F5F0',
+          },
+          animation: {
+            'float': 'float 6s ease-in-out infinite',
+            'fade-in': 'fadeIn 1s ease-in',
+            'slide-up': 'slideUp 0.5s ease-out',
+            'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite'
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-10px)' }
+            },
+            fadeIn: {
+              '0%': { opacity: '0' },
+              '100%': { opacity: '1' }
+            },
+            slideUp: {
+              '0%': { opacity: '0', transform: 'translateY(20px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' }
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    .wave-pattern {
+      background-image: url("data:image/svg+xml,%3Csvg width='52' height='26' viewBox='0 0 52 26' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 10c0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6h2c0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4v2c-3.314 0-6-2.686-6-6 0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6zm25.464-1.95l8.486 8.486-1.414 1.414-8.486-8.486 1.414-1.414z' fill='%23D4AF37' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+    }
+
+
+    .parallax {
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    .room-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+
+    .amenity-icon {
+      transition: all 0.3s ease;
+    }
+
+    .amenity-card:hover .amenity-icon {
+      transform: scale(1.2);
+      color: #D4AF37;
+    }
+
+    .testimonial-card {
+      transition: all 0.3s ease;
+    }
+
+    .testimonial-card:hover {
+      transform: scale(1.03);
+    }
+   
+  </style>
+</head>
+
+<body>
+  <nav class="fixed w-full z-50 bg-navy bg-opacity-90 backdrop-blur-sm text-cream transition-all duration-300">
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+      <div class="animate-fade-in flex items-center space-x-2">
+        <span class="text-4xl font-bold text-red-500">मंगलम</span>
+        <span class="text-sm text-white">Hotel & Restorent</span>
+      </div>
+      <div class="hidden md:flex space-x-8">
+        <a href="#home" class="hover:text-red-500 transition-colors duration-300">Home</a>
+        <a href="#rooms" class="hover:text-red-500 transition-colors duration-300">Rooms</a>
+        <a href="#gallery" class="hover:text-red-500 transition-colors duration-300">Gallery</a>
+        <a href="#amenities" class="hover:text-red-500 transition-colors duration-300">Amenities</a>
+        <a href="reservation.html" class="hover:text-red-500 transition-colors duration-300">reservations</a>
+        <a href="#contact" class="hover:text-red-500 transition-colors duration-300">Contact</a>
+      </div>
+    </div>
+  </nav>
+  <section id="home" class="relative h-screen flex items-center justify-center overflow-hidden parallax pt-16">
+    <img id="my" src="https://images.jdmagicbox.com/comp/junagadh/x4/9999px285.x285.190125181622.s8x4/catalogue/mangalam-yatrik-bhavan-junagadh-bhavnath-junagadh-punjabi-restaurants-0slprmtxnv.jpg"
+      alt="Luxury hotel lobby with grand chandelier, marble floors, and modern seating area with warm ambient lighting"
+      class="absolute inset-0 w-full h-full object-cover" />
+    <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+    <div class="relative z-10 container mx-auto px-6 text-center animate-fade-in">
+      <h1 class="text-4xl md:text-6xl font-bold text-white mb-6 animate-slide-up">Luxury Experience </h1>
+      <p class="text-xl text-gray-300 mb-8 max-w-3xl mx-auto animate-slide-up">Where every detail is designed for your
+        comfort in the heart of the city</p>
+      <div class="flex flex-col sm:flex-row justify-center gap-4 animate-slide-up">
+        <a href="reservation.html"><button
+            class="bg-gold hover:bg-opacity-80 text-navy font-bold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105">
+            Reserve Now <i class="fas fa-arrow-right ml-2"></i>
+          </button></a>
+      </div>
+    </div>
+    <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+      <a href="#rooms" class="text-white hover:text-gold">
+        <i class="fas fa-chevron-down text-2xl"></i>
+      </a>
+    </div>
+  </section>
+  <section id="rooms" class="py-20 wave-pattern">
+    <div class="container mx-auto px-6">
+      <div class="text-center mb-16 animate-fade-in">
+        <h2 class="text-3xl md:text-4xl font-bold text-navy mb-4">Our Accommodations</h2>
+        <div class="w-20 h-1 bg-gold mx-auto mb-4"></div>
+        <p class="text-gray-600 max-w-2xl mx-auto">Discover our curated selection of exquisite rooms designed for every
+          need and occasion</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Room 1 -->
+        <div
+          class="room-card bg-white rounded-xl overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl">
+          <div class="relative overflow-hidden h-64">
+            <img
+              src="https://images.jdmagicbox.com/v2/comp/junagadh/x4/9999px285.x285.190125181622.s8x4/catalogue/hotel-mangalam-bhavnath-taleti-road-junagadh-hotels-5tbzcqryg9.jpg"
+              class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" />
+            <div class="absolute bottom-4 right-4">
+              <span class="bg-white text-navy font-bold px-3 py-1 rounded-full shadow-sm">From $199/night</span>
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-navy mb-2">Deluxe King Room</h3>
+            <p class="text-gray-600 mb-4">Experience luxury with our spacious king rooms featuring premium amenities and
+              stunning city views</p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="text-xs bg-gray-100 px-2 py-1 rounded">320 sq ft</span>
+              <span class="text-xs bg-gray-100 px-2 py-1 rounded">1 King Bed</span>
+              <span class="text-xs bg-gray-100 px-2 py-1 rounded">City View</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <button
+                class="text-white bg-navy hover:bg-opacity-90 px-4 py-2 rounded-full text-sm transition-all duration-300 transform hover:scale-105">
+                Book Now
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Room 2 -->
+        <div
+          class="room-card bg-white rounded-xl overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl">
+          <div class="relative overflow-hidden h-64">
+            <img
+              src="https://images.jdmagicbox.com/v2/comp/junagadh/x4/9999px285.x285.190125181622.s8x4/catalogue/hotel-mangalam-bhavnath-taleti-road-junagadh-hotels-wgyitbwy9z.jpg"
+              class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" />
+            <div class="absolute bottom-4 right-4">
+              <span class="bg-white text-navy font-bold px-3 py-1 rounded-full shadow-sm">From $499/night</span>
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-navy mb-2">Presidential Suite</h3>
+            <p class="text-gray-600 mb-4">Ultimate luxury with separate living room, enhanced privacy and top-tier
+              amenities</p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="text-xs bg-gray-100 px-2 py-1 rounded">850 sq ft</span>
+              <span class="text-xs bg-gray-100 px-2 py-1 rounded">1 King Bed</span>
+              <span class="text-xs bg-gray-100 px-2 py-1 rounded">Ocean View</span>
+              <span class="text-xs bg-gray-100 px-2 py-1 rounded">Private Balcony</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <button
+                class="text-white bg-navy hover:bg-opacity-90 px-4 py-2 rounded-full text-sm transition-all duration-300 transform hover:scale-105">
+                Book Now
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Room 3 -->
+        <div
+          class="room-card bg-white rounded-xl overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl">
+          <div class="relative overflow-hidden h-64">
+            <img
+              src="https://images.jdmagicbox.com/v2/comp/junagadh/x4/9999px285.x285.190125181622.s8x4/catalogue/hotel-mangalam-bhavnath-taleti-road-junagadh-hotels-589ouavs99.jpg"
+              class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" />
+            <div class="absolute bottom-4 right-4">
+              <span class="bg-white text-navy font-bold px-3 py-1 rounded-full shadow-sm">From $349/night</span>
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-navy mb-2">Executive Suite</h3>
+            <p class="text-gray-600 mb-4">Productivity meets relaxation with dedicated workspace and premium amenities
+            </p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="text-xs bg-gray-100 px-2 py-1 rounded">500 sq ft</span>
+              <span class="text-xs bg-gray-100 px-2 py-1 rounded">1 King Bed</span>
+              <span class="text-xs bg-gray-100 px-2 py-1 rounded">Work Desk</span>
+              <span class="text-xs bg-gray-100 px-2 py-1 rounded">Lounge Area</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <button
+                class="text-white bg-navy hover:bg-opacity-90 px-4 py-2 rounded-full text-sm transition-all duration-300 transform hover:scale-105">
+                Book Now
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="amenities" class="py-20 bg-navy text-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 animate-fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold text-gold mb-4">World-Class Amenities</h2>
+                <div class="w-20 h-1 bg-cream mx-auto mb-4"></div>
+                <p class="text-gray-300 max-w-2xl mx-auto">Designed to elevate your stay with exceptional services and facilities</p>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Amenity 1 -->
+                <div class="amenity-card bg-navy-light p-6 rounded-xl border border-gray-700 hover:border-gold transition-all duration-300">
+                    <div class="amenity-icon text-gold text-4xl mb-4">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Gourmet Dining</h3>
+                    <p class="text-gray-300">Three award-winning restaurants serving international cuisine from renowned chefs</p>
+                </div>
+                
+                <!-- Amenity 2 -->
+                <div class="amenity-card bg-navy-light p-6 rounded-xl border border-gray-700 hover:border-gold transition-all duration-300">
+                    <div class="amenity-icon text-gold text-4xl mb-4">
+                        <i class="fas fa-spa"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Luxury Spa</h3>
+                    <p class="text-gray-300">Rejuvenate with our signature treatments and traditional therapies in our serene spa</p>
+                </div>
+                
+                <!-- Amenity 3 -->
+                <div class="amenity-card bg-navy-light p-6 rounded-xl border border-gray-700 hover:border-gold transition-all duration-300">
+                    <div class="amenity-icon text-gold text-4xl mb-4">
+                        <i class="fas fa-swimming-pool"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Infinity Pool</h3>
+                    <p class="text-gray-300">Stunning rooftop infinity pool with panoramic city views and poolside service</p>
+                </div>
+                
+                <!-- Amenity 4 -->
+                <div class="amenity-card bg-navy-light p-6 rounded-xl border border-gray-700 hover:border-gold transition-all duration-300">
+                    <div class="amenity-icon text-gold text-4xl mb-4">
+                        <i class="fas fa-dumbbell"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Fitness Center</h3>
+                    <p class="text-gray-300">State-of-the-art equipment with personal trainers and wellness classes available</p>
+                </div>
+                
+                <!-- Amenity 5 -->
+                <div class="amenity-card bg-navy-light p-6 rounded-xl border border-gray-700 hover:border-gold transition-all duration-300">
+                    <div class="amenity-icon text-gold text-4xl mb-4">
+                        <i class="fas fa-wifi"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">High-Speed WiFi</h3>
+                    <p class="text-gray-300">Complimentary ultra-fast fiber optic internet throughout the property</p>
+                </div>
+                
+                <!-- Amenity 6 -->
+                <div class="amenity-card bg-navy-light p-6 rounded-xl border border-gray-700 hover:border-gold transition-all duration-300">
+                    <div class="amenity-icon text-gold text-4xl mb-4">
+                        <i class="fas fa-car"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Valet Service</h3>
+                    <p class="text-gray-300">24/7 valet parking with car wash and detailing services available</p>
+                </div>
+                
+                <!-- Amenity 7 -->
+                <div class="amenity-card bg-navy-light p-6 rounded-xl border border-gray-700 hover:border-gold transition-all duration-300">
+                    <div class="amenity-icon text-gold text-4xl mb-4">
+                        <i class="fas fa-concierge-bell"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Concierge</h3>
+                    <p class="text-gray-300">Personalized assistance with reservations, tickets, and local recommendations</p>
+                </div>
+                
+                <!-- Amenity 8 -->
+                <div class="amenity-card bg-navy-light p-6 rounded-xl border border-gray-700 hover:border-gold transition-all duration-300">
+                    <div class="amenity-icon text-gold text-4xl mb-4">
+                        <i class="fas fa-briefcase-medical"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">24/7 Security</h3>
+                    <p class="text-gray-300">Discreet professional security and medical staff available at all times</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="gallery" class="py-20 bg-white">
+  <div class="container mx-auto px-6 text-center animate-fade-in">
+    <h2 class="text-3xl md:text-4xl font-bold text-navy mb-4">Gallery</h2>
+    <div class="w-20 h-1 bg-gold mx-auto mb-10"></div>
+    <p class="text-gray-600 mb-10 max-w-xl mx-auto">Take a glimpse into the elegance and charm of Mangalam Hotel through our curated photo gallery.</p>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+      <!-- Image 1 -->
+      <div class="overflow-hidden rounded-xl shadow-lg transform hover:scale-105 transition duration-300">
+        <img src="https://images.jdmagicbox.com/comp/junagadh/x4/9999px285.x285.190125181622.s8x4/catalogue/mangalam-yatrik-bhavan-junagadh-bhavnath-junagadh-punjabi-restaurants-0slprmtxnv.jpg" class="w-full h-full object-cover">
+      </div>
+
+      <!-- Image 2 -->
+      <div class="overflow-hidden rounded-xl shadow-lg transform hover:scale-105 transition duration-300">
+        <img src="https://images.jdmagicbox.com/v2/comp/junagadh/x4/9999px285.x285.190125181622.s8x4/catalogue/hotel-mangalam-bhavnath-taleti-road-junagadh-hotels-5tbzcqryg9.jpg" class="w-full h-full object-cover">
+      </div>
+
+      <!-- Image 3 -->
+      <div class="overflow-hidden rounded-xl shadow-lg transform hover:scale-105 transition duration-300">
+        <img src="https://images.jdmagicbox.com/comp/junagadh/x4/9999px285.x285.190125181622.s8x4/catalogue/mangalam-yatrik-bhavan-junagadh-bhavnath-junagadh-punjabi-restaurants-jiwjcd1gzq.jpg" class="w-full h-full object-cover">
+      </div>
+
+      <!-- Image 4 -->
+      <div class="overflow-hidden rounded-xl shadow-lg transform hover:scale-105 transition duration-300">
+        <img src="https://images.jdmagicbox.com/v2/comp/junagadh/x4/9999px285.x285.190125181622.s8x4/catalogue/mangalam-yatrik-bhavan-bhavnath-taleti-road-junagadh-guest-house-4u0nst8hut.jpg" class="w-full h-full object-cover">
+      </div>
+
+      <!-- Image 5 -->
+      <div class="overflow-hidden rounded-xl shadow-lg transform hover:scale-105 transition duration-300">
+        <img src="https://travel.nyc3.cdn.digitaloceanspaces.com/image/india/gujarat/junagadh/mangalam-yatrik-bhavan-junagadh-1608452810.jpg" class="w-full h-full object-cover">
+      </div>
+
+      <!-- Image 6 -->
+      <div class="overflow-hidden rounded-xl shadow-lg transform hover:scale-105 transition duration-300">
+        <img src="https://content.jdmagicbox.com/comp/junagadh/q2/9999px285.x285.180309075750.i4q2/catalogue/mangalam-roof-top-restaurant-junagadh-restaurants-mq4le.jpg" class="w-full h-full object-cover">
+      </div> 
+      <!-- Image 1 -->
+      <div class="overflow-hidden rounded-xl shadow-lg transform hover:scale-105 transition duration-300">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlxuRdzLnkcguFzpPBu-wBdmsvGRZgt7_8og&s" class="w-full h-full object-cover">
+      </div>
+
+      <!-- Image 2 -->
+      <div class="overflow-hidden rounded-xl shadow-lg transform hover:scale-105 transition duration-300">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrxc0pgkMTcGMkHt4OUMGW3ffV8isKI8Qkgfvsy5QTzcx8fkrvKzldfZJ0k0OnUP3k-g4&usqp=CAU" class="w-full h-full object-cover">
+      </div>
+
+      <!-- Image 3 -->
+      <div class="overflow-hidden rounded-xl shadow-lg transform hover:scale-105 transition duration-300">
+        <img src="https://images.jdmagicbox.com/comp/junagadh/x4/9999px285.x285.190125181622.s8x4/catalogue/mangalam-yatrik-bhavan-junagadh-bhavnath-junagadh-punjabi-restaurants-jiwjcd1gzq.jpg" class="w-full h-full object-cover">
+      </div>
+
+      <!-- Image 4 -->
+      <div class="overflow-hidden rounded-xl shadow-lg transform hover:scale-105 transition duration-300">
+        <img src="https://mangalamheritage.com/assets/img/gallery_img12.jpg" class="w-full h-full object-cover">
+      </div>
+
+      <!-- Image 5 -->
+      <div class="overflow-hidden rounded-xl shadow-lg transform hover:scale-105 transition duration-300">
+        <img src="https://panel.mycaste.in/assets/uploads/dharamshala/d677b-2022-08-22-f.jpg" class="w-full h-full object-cover">
+      </div>
+
+      <!-- Image 6 -->
+      <div class="overflow-hidden rounded-xl shadow-lg transform hover:scale-105 transition duration-300">
+        <img src="https://content.jdmagicbox.com/comp/junagadh/n4/9999px285.x285.180728125712.f9n4/catalogue/mangalam-heritage-bhavnath-junagadh-hotels-irajocsrua.jpg" class="w-full h-full object-cover">
+      </div>
+    </div>
+  </div>
+</section>
+ <section id="testimonials" class="py-20 bg-cream">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 animate-fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold text-navy mb-4">Guest Experiences</h2>
+                <div class="w-20 h-1 bg-gold mx-auto mb-4"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto">Our guests share their unforgettable stays at LUXURI</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    <div class="flex items-center mb-4">
+                        <div class="relative h-12 w-12 rounded-full overflow-hidden">
+                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/0993c431-1eb7-4548-9d57-4a68e19ea174.png" alt="Smiling middle-aged woman with blonde hair standing in front of hotel" class="h-full w-full object-cover" />
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="font-bold text-navy">Sarah Johnson</h4>
+                            <p class="text-sm text-gray-500">Business Executive</p>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="flex text-gold">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">"The attention to detail was extraordinary. The concierge arranged tickets to sold-out shows and the spa treatments were heavenly. This is my new home away from home."</p>
+                    <div class="mt-4 text-sm text-gray-400">
+                        <i class="fas fa-calendar-alt mr-1"></i> Stayed: March 2023
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    <div class="flex items-center mb-4">
+                        <div class="relative h-12 w-12 rounded-full overflow-hidden">
+                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/14f3e9fc-9188-4224-aac7-17ab1f5d9d1c.png" alt="Happy older couple smiling while sitting in hotel lounge" class="h-full w-full object-cover" />
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="font-bold text-navy">Robert & Maria Chen</h4>
+                            <p class="text-sm text-gray-500">Anniversary Celebration</p>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="flex text-gold">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">"For our 30th anniversary, the staff surprised us with champagne, rose petals, and a private dinner by the pool. The presidential suite was beyond our wildest expectations."</p>
+                    <div class="mt-4 text-sm text-gray-400">
+                        <i class="fas fa-calendar-alt mr-1"></i> Stayed: February 2023
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    <div class="flex items-center mb-4">
+                        <div class="relative h-12 w-12 rounded-full overflow-hidden">
+                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/44536426-cd26-4f92-a3fe-758d7554bf47.png" alt="Young businessman wearing glasses and formal attire" class="h-full w-full object-cover" />
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="font-bold text-navy">David Müller</h4>
+                            <p class="text-sm text-gray-500">International Client</p>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="flex text-gold">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">"As a frequent global traveler, I'm rarely impressed. But LUXURI's executive suite with dedicated workspace and soundproofing made my business trip productive and peaceful."</p>
+                    <div class="mt-4 text-sm text-gray-400">
+                        <i class="fas fa-calendar-alt mr-1"></i> Stayed: January 2023
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+  <footer class="bg-navy text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h3 class="text-xl font-bold text-gold mb-4">मंगलम</h3>
+                    <p class="text-gray-300 mb-4">Redefining luxury hospitality with exceptional service and unforgettable experiences.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-300 hover:text-gold transition-colors duration-300">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-gold transition-colors duration-300">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-gold transition-colors duration-300">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-gray-300 hover:text-gold transition-colors duration-300">Home</a></li>
+                        <li><a href="#rooms" class="text-gray-300 hover:text-gold transition-colors duration-300">Rooms & Suites</a></li>
+                        <li><a href="#gallery" class="text-gray-300 hover:text-gold transition-colors duration-300">Gallery</a></li>
+                        <li><a href="reservation.html" class="text-gray-300 hover:text-gold transition-colors duration-300">Reservation</a></li>
+                        <li><a href="#amenities" class="text-gray-300 hover:text-gold transition-colors duration-300">Amenities</a></li>
+                        <li><a href="#testimonials" class="text-gray-300 hover:text-gold transition-colors duration-300">Testimonials</a></li>
+                    </ul>
+                </div>
+                <div class="text-white animate-slide-up">
+                    <div class="mb-8">
+                        <h3 class="text-xl font-bold text-gold mb-4">Contact Information</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <i class="fas fa-map-marker-alt text-gold mt-1 mr-4 text-xl"></i>
+                                <div>
+                                    <h4 class="font-bold">Address</h4>
+                                    <p class="text-gray-300">GGG2+HVG,<br> Taleti Rd,<br> Bhavnath,<br> Gujarat 362004</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-phone-alt text-gold mr-4 text-xl"></i>
+                                <div>
+                                    <h4 class="font-bold">Phone</h4>
+                                    <p class="text-gray-300"> 0285 262 7220</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-envelope text-gold mr-4 text-xl"></i>
+                                <div>
+                                    <h4 class="font-bold">Email</h4>
+                                    <p class="text-gray-300">mangalamheritage@gmail.com</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+            </div>
+          </div>
+              </div>
+              <div class="border-t border-gray-700 pt-8 text-center text-gray-300">
+                  <p>© 2023 LUXURI Hotel & Resorts. All Rights Reserved.</p>
+              </div>
+    </footer>
+  <button id="back-to-top"
+    class="fixed bottom-5 right-5 p-3 bg-gold text-navy rounded-full shadow-lg opacity-0 invisible transition-all duration-300 hover:bg-opacity-90">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+  <script>
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+
+    // Back to top button
+    const backToTopButton = document.getElementById('back-to-top');
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        backToTopButton.classList.remove('opacity-0', 'invisible');
+        backToTopButton.classList.add('opacity-100', 'visible');
+      } else {
+        backToTopButton.classList.add('opacity-0', 'invisible');
+        backToTopButton.classList.remove('opacity-100', 'visible');
+      }
+    });
+
+    backToTopButton.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    // Animate elements when they come into view
+    const animateOnScroll = () => {
+      const elements = document.querySelectorAll('.animate-fade-in, .animate-slide-up');
+
+      elements.forEach(element => {
+        const elementPosition = element.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+
+        if (elementPosition < windowHeight - 100) {
+          element.style.opacity = 1;
+          element.style.transform = 'translateY(0)';
+        }
+      });
+    };
+
+    // Initialize animations
+    window.addEventListener('load', animateOnScroll);
+    window.addEventListener('scroll', animateOnScroll);
+
+    // Room card hover effect
+    document.querySelectorAll('.room-card').forEach(card => {
+      card.addEventListener('mouseenter', () => {
+        card.querySelector('img').style.transform = 'scale(1.05)';
+      });
+      card.addEventListener('mouseleave', () => {
+        card.querySelector('img').style.transform = 'scale(1)';
+      });
+    });
+
+    // Booking form validation
+    document.querySelector('form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      alert('Thank you for your message! We will contact you shortly.');
+      this.reset();
+    });
+  </script>
+</body>
+
+</html>
